@@ -1,4 +1,8 @@
 package com.example.pricetracker.data
 
-class TrackerRepositoryImpl {
+import com.example.pricetracker.domain.TrackerRepository
+
+class TrackerRepositoryImpl(
+
+) : TrackerRepository {
 }

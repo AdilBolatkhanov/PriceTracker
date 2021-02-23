@@ -1,4 +1,4 @@
-package com.example.pricetracker.data.remote
+package com.example.pricetracker.data.remote.api
 
 import com.example.pricetracker.data.dto.detail.ProductDetailRemoteDTO
 import com.example.pricetracker.data.dto.products.ProductsRemoteItem

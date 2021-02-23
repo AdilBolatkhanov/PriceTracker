@@ -1,4 +1,4 @@
-package com.example.pricetracker.data.local
+package com.example.pricetracker.data.local.database
 
 import androidx.room.*
 import com.example.pricetracker.domain.entity.Product
@@ -11,7 +11,7 @@ interface ProductsDao {
     suspend fun insertProduct(product: Product)
 
     @Query("SELECT * FROM product")
-    fun getAllProducts(): Flow<List<Product>>
+    suspend fun getAllProducts(): List<Product>
 
     @Query("DELETE FROM product")
     suspend fun deleteAllNotes()

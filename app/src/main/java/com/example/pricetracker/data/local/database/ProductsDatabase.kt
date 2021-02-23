@@ -1,4 +1,4 @@
-package com.example.pricetracker.data.local
+package com.example.pricetracker.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
