@@ -5,3 +5,8 @@ data class ProductsItem(
     val id: Int,
     val name: String
 )
+
+data class Category(
+    val id: Int,
+    val name: String
+)
