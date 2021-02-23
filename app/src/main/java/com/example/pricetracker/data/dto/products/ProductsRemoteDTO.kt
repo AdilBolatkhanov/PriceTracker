@@ -1,6 +1,6 @@
 package com.example.pricetracker.data.dto.products
 
-data class ProductsItem(
+data class ProductsRemoteItem(
     val category: Category,
     val id: Int,
     val name: String
