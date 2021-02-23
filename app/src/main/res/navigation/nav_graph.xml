@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/authFragment">
+
+    <fragment
+        android:id="@+id/productsGridFragment"
+        android:name="com.example.pricetracker.ui.products.ProductsGridFragment"
+        android:label="ProductsGridFragment" >
+        <action
+            android:id="@+id/action_productsGridFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.example.pricetracker.ui.detail.ProductDetailFragment"
+        android:label="ProductDetailFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_productsGridFragment"
+            app:destination="@id/productsGridFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.pricetracker.ui.auth.AuthFragment"
+        android:label="AuthFragment" >
+        <action
+            android:id="@+id/action_authFragment_to_productsGridFragment"
+            app:destination="@id/productsGridFragment" />
+    </fragment>
+</navigation>
