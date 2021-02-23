@@ -1,5 +1,7 @@
 package com.example.pricetracker.data.local
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
 import com.example.pricetracker.data.local.database.ProductsDao
 import com.example.pricetracker.domain.entity.Product
 import com.example.pricetracker.util.Result
@@ -13,6 +15,12 @@ class ProductLocalDataSourceImpl(
     override suspend fun insertProducts(products: List<Product>) = withContext(Dispatchers.IO) {
         products.forEach { product ->
             productsDao.insertProduct(product)
+        }
+    }
+
+    override fun observeProducts(): LiveData<Result<List<Product>>> {
+        return productsDao.observeProducts().map {
+            Result.Success(it)
         }
     }
 
