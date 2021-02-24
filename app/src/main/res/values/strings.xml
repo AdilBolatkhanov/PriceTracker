@@ -12,12 +12,12 @@
 
     <!-- Shrine backdrop menu labels -->
     <string name="featured_label">Featured</string>
-    <string name="apartment_label">Apartment</string>
-    <string name="accessories_label">Accessories</string>
-    <string name="shoes_label">Shoes</string>
-    <string name="tops_label">Tops</string>
-    <string name="bottoms_label">Bottoms</string>
-    <string name="dresses_label">Dresses</string>
+    <string name="smartphonse_label">Smartphones</string>
+    <string name="laptop_label">Laptop</string>
+    <string name="tv_label">TV</string>
+    <string name="tops_label">Camera</string>
+    <string name="bottoms_label">Beauty</string>
+    <string name="appliances_label">Appliances</string>
     <string name="account_label">My Account</string>
     <string name="logo_content_description">Shrine Logo</string>
 </resources>
