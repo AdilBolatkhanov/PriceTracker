@@ -1,13 +1,14 @@
-package com.example.pricetracker.domain
+package com.example.pricetracker.domain.repository
 
 import androidx.lifecycle.LiveData
 import com.example.pricetracker.domain.entity.Product
 import com.example.pricetracker.domain.entity.ProductDetail
 import com.example.pricetracker.util.Result
+import kotlinx.coroutines.flow.Flow
 
 interface TrackerRepository {
 
-    suspend fun getAllProducts(forceUpdate: Boolean): Result<List<Product>>
+   fun getAllProducts(forceUpdate: Boolean): Flow<Result<List<Product>>>
 
     suspend fun getDetailOfProduct(productId: Int): Result<ProductDetail>
 }

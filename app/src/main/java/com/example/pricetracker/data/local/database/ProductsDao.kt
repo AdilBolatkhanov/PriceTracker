@@ -12,10 +12,7 @@ interface ProductsDao {
     suspend fun insertProduct(product: Product)
 
     @Query("SELECT * FROM product")
-    suspend fun getAllProducts(): List<Product>
-
-    @Query("SELECT * FROM product")
-    fun observeProducts(): LiveData<List<Product>>
+    fun getAllProducts(): Flow<List<Product>>
 
     @Query("DELETE FROM product")
     suspend fun deleteAllNotes()
