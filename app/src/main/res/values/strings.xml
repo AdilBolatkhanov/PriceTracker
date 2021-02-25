@@ -15,8 +15,8 @@
     <string name="smartphonse_label">Smartphones</string>
     <string name="laptop_label">Laptop</string>
     <string name="tv_label">TV</string>
-    <string name="tops_label">Camera</string>
-    <string name="bottoms_label">Beauty</string>
+    <string name="camera_label">Camera</string>
+    <string name="beauty_label">Beauty</string>
     <string name="appliances_label">Appliances</string>
     <string name="account_label">My Account</string>
     <string name="logo_content_description">Shrine Logo</string>

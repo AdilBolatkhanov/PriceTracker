@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/featuredBtn"
+        style="@style/Widget.Tracker.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/featured_label" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/smartphoneBtn"
+        style="@style/Widget.Tracker.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/smartphonse_label" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/laptopBtn"
+        style="@style/Widget.Tracker.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/laptop_label" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tvBtn"
+        style="@style/Widget.Tracker.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_label" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cameraBtn"
+        style="@style/Widget.Tracker.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/camera_label" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/appliancesBtn"
+        style="@style/Widget.Tracker.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/appliances_label" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/beautyBtn"
+        style="@style/Widget.Tracker.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/beauty_label" />
+
+    <View
+        android:layout_width="56dp"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="?android:attr/textColorPrimary" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Tracker.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/account_label" />
+
+</merge>
