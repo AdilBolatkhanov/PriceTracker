@@ -1,6 +1,6 @@
 package com.example.pricetracker.data
 
-import android.app.Application
+import android.content.Context
 import com.example.pricetracker.data.local.ProductLocalDataSource
 import com.example.pricetracker.data.remote.ProductRemoteDataSource
 import com.example.pricetracker.domain.entity.Product
@@ -10,12 +10,11 @@ import com.example.pricetracker.util.Result
 import com.example.pricetracker.util.checkForInternetConnection
 import com.example.pricetracker.util.networkBoundResource
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
 
-class TrackerRepositoryImpl @Inject constructor(
+class TrackerRepositoryImpl(
     private val localDataSource: ProductLocalDataSource,
     private val remoteDataSource: ProductRemoteDataSource,
-    private val context: Application
+    private val context: Context
 ) : TrackerRepository {
 
     override fun getAllProducts(forceUpdate: Boolean): Flow<Result<List<Product>>> {

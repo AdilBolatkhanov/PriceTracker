@@ -2,6 +2,7 @@ package com.example.pricetracker.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.pricetracker.data.TrackerRepositoryImpl
 import com.example.pricetracker.data.local.ProductLocalDataSource
 import com.example.pricetracker.data.local.ProductLocalDataSourceImpl
 import com.example.pricetracker.data.local.database.ProductsDao
@@ -9,6 +10,7 @@ import com.example.pricetracker.data.local.database.ProductsDatabase
 import com.example.pricetracker.data.remote.ProductRemoteDataSource
 import com.example.pricetracker.data.remote.ProductRemoteDataSourceImpl
 import com.example.pricetracker.data.remote.api.TrackerApi
+import com.example.pricetracker.domain.repository.TrackerRepository
 import com.example.pricetracker.util.Constant.BASE_URL
 import com.example.pricetracker.util.Constant.DATABASE_NAME
 import dagger.Module
@@ -49,6 +51,20 @@ object AppModule {
     fun provideLocalDataSource(
         dao: ProductsDao
     ): ProductLocalDataSource = ProductLocalDataSourceImpl(dao)
+
+    @Singleton
+    @Provides
+    fun provideTrackerRepository(
+        @RemoteProductsDataSource remoteDataSource: ProductRemoteDataSource,
+        @LocalProductsDataSource localDataSource: ProductLocalDataSource,
+        @ApplicationContext context: Context
+        ): TrackerRepository {
+        return TrackerRepositoryImpl(
+            localDataSource = localDataSource,
+            remoteDataSource = remoteDataSource,
+            context = context
+        )
+    }
 
     @Singleton
     @Provides

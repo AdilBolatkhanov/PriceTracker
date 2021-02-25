@@ -8,9 +8,10 @@ import com.example.pricetracker.domain.entity.Product
 import com.example.pricetracker.util.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class ProductGridViewModel constructor(
+class ProductGridViewModel @Inject constructor(
     private val getAllProductsUseCase: GetAllProductsUseCase,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
