@@ -4,7 +4,7 @@ object Constant {
 
     const val DATABASE_NAME = "tracker-database"
 
-    const val BASE_URL = "http://localhost:8000/"
+    const val BASE_URL = "http://192.168.100.2:8000/"
 
     val IMAGE_STORAGE: HashMap<Int, String> = hashMapOf(
         0 to "https://storage.googleapis.com/material-vignettes.appspot.com/image/0-0.jpg",

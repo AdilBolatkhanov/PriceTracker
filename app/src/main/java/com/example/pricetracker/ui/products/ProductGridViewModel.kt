@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductGridViewModel @Inject constructor(
     private val getAllProductsUseCase: GetAllProductsUseCase,
-    @Assisted private val savedStateHandle: SavedStateHandle
+    @Assisted private val filterStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _forceUpdate = MutableLiveData<Boolean>(false)
@@ -23,6 +23,8 @@ class ProductGridViewModel @Inject constructor(
     }.distinctUntilChanged().switchMap {
         filterProducts(it)
     }
+
+    private var currentCategory = Category.ALL
 
     val items: LiveData<Result<List<Product>>> = _items
 
@@ -35,17 +37,16 @@ class ProductGridViewModel @Inject constructor(
 
     init {
         setFiltering(getSavedFilterType())
-        setCategory(getSavedCategory())
         loadProducts(true)
     }
 
     fun setFiltering(type: ProductFilterType){
-        savedStateHandle.set(PRODUCTS_FILTER_SAVED_STATE_KEY, type)
+        filterStateHandle.set(PRODUCTS_FILTER_SAVED_STATE_KEY, type)
         loadProducts(false)
     }
 
     fun setCategory(type: Category){
-        savedStateHandle.set(PRODUCTS_CATEGORY_SAVED_STATE_KEY, type)
+        currentCategory = type
         loadProducts(false)
     }
 
@@ -56,7 +57,7 @@ class ProductGridViewModel @Inject constructor(
 
         if (productRes is Result.Success){
             viewModelScope.launch {
-                result.postValue(filterItems(productRes.data, getSavedFilterType(), getSavedCategory()))
+                result.postValue(filterItems(productRes.data, getSavedFilterType(), currentCategory))
             }
         }else{
             result.postValue(productRes)
@@ -82,12 +83,9 @@ class ProductGridViewModel @Inject constructor(
     }
 
     private fun getSavedFilterType(): ProductFilterType {
-        return savedStateHandle.get(PRODUCTS_FILTER_SAVED_STATE_KEY) ?: ProductFilterType.LATEST
+        return filterStateHandle.get(PRODUCTS_FILTER_SAVED_STATE_KEY) ?: ProductFilterType.LATEST
     }
 
-    private fun getSavedCategory(): Category {
-        return savedStateHandle.get(PRODUCTS_CATEGORY_SAVED_STATE_KEY) ?: Category.ALL
-    }
 }
 
 private const val PRODUCTS_FILTER_SAVED_STATE_KEY = "TASKS_FILTER_SAVED_STATE_KEY"
