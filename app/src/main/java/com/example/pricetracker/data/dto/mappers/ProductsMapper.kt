@@ -6,12 +6,16 @@ import com.example.pricetracker.data.dto.products.ProductsRemoteItem
 import com.example.pricetracker.domain.entity.Product
 import com.example.pricetracker.domain.entity.ProductDetail
 import com.example.pricetracker.domain.entity.ShopPrice
+import com.example.pricetracker.util.Constant.IMAGE_STORAGE
 
 fun ProductsRemoteItem.toDomainModel(): Product {
+    val randomInd = (0 until IMAGE_STORAGE.size).random()
+    val imageUrl = IMAGE_STORAGE[randomInd]
     return Product(
         id = id,
         name = name,
-        category = category.name
+        category = category.name,
+        imageUrl = imageUrl!!
         )
 }
 

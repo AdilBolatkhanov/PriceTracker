@@ -9,5 +9,6 @@ data class Product(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
     val name: String,
-    val category: Category
+    val category: Category,
+    val imageUrl: String
 )
