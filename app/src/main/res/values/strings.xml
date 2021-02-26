@@ -20,4 +20,9 @@
     <string name="appliances_label">Appliances</string>
     <string name="account_label">My Account</string>
     <string name="logo_content_description">Shrine Logo</string>
+
+    <string name="filter_dialog">Filter By</string>
+    <string name="filter_popular">Popular</string>
+    <string name="filter_latest">Latest</string>
+    <string name="filter_oldest">Oldest</string>
 </resources>

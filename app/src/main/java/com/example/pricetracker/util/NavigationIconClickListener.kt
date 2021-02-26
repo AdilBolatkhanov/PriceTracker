@@ -22,6 +22,7 @@ class NavigationIconClickListener @JvmOverloads internal constructor(
     private val animatorSet = AnimatorSet()
     private val height: Int
     private var backdropShown = false
+    lateinit var navView: View
 
     init {
         val displayMetrics = DisplayMetrics()
@@ -30,6 +31,7 @@ class NavigationIconClickListener @JvmOverloads internal constructor(
     }
 
     override fun onClick(view: View) {
+        navView = view
         backdropShown = !backdropShown
 
         // Cancel the existing animations
