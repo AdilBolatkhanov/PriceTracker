@@ -6,7 +6,7 @@ import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 @HiltAndroidApp
-class TrackerApplication: Application() {
+class TrackerApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

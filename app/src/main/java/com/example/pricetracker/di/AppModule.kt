@@ -58,7 +58,7 @@ object AppModule {
         @RemoteProductsDataSource remoteDataSource: ProductRemoteDataSource,
         @LocalProductsDataSource localDataSource: ProductLocalDataSource,
         @ApplicationContext context: Context
-        ): TrackerRepository {
+    ): TrackerRepository {
         return TrackerRepositoryImpl(
             localDataSource = localDataSource,
             remoteDataSource = remoteDataSource,

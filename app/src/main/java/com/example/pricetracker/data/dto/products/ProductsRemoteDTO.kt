@@ -14,7 +14,7 @@ data class CategoryRemote(
     val name: Category
 )
 
-enum class Category(val value: String){
+enum class Category(val value: String) {
     @SerializedName("Smartphones")
     SMARTPHONES("Smartphones"),
 

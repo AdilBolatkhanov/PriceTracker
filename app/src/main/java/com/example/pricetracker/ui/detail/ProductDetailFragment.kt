@@ -1,6 +1,9 @@
 package com.example.pricetracker.ui.detail
 
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class ProductDetailFragment: Fragment() {
+@AndroidEntryPoint
+class ProductDetailFragment : Fragment() {
+
 }

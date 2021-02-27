@@ -17,7 +17,7 @@ class StaggeredProductCardAdapter :
 
     private var clickListener: ((Product) -> Unit)? = null
 
-    fun setClickListener(listener: (Product) -> Unit){
+    fun setClickListener(listener: (Product) -> Unit) {
         this.clickListener = listener
     }
 

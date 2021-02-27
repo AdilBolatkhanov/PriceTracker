@@ -16,7 +16,7 @@ fun ProductsRemoteItem.toDomainModel(): Product {
         name = name,
         category = category.name,
         imageUrl = imageUrl!!
-        )
+    )
 }
 
 fun ProductDetailRemoteDTO.toDomainModel(): ProductDetail {
@@ -28,7 +28,7 @@ fun ProductDetailRemoteDTO.toDomainModel(): ProductDetail {
     )
 }
 
-fun PriceRemote.toPriceDomainModel(): ShopPrice{
+fun PriceRemote.toPriceDomainModel(): ShopPrice {
     return ShopPrice(
         cost = cost,
         shopName = shop.name,

@@ -40,12 +40,12 @@ class ProductGridViewModel @Inject constructor(
         loadProducts(true)
     }
 
-    fun setFiltering(type: ProductFilterType){
+    fun setFiltering(type: ProductFilterType) {
         filterStateHandle.set(PRODUCTS_FILTER_SAVED_STATE_KEY, type)
         loadProducts(false)
     }
 
-    fun setCategory(type: Category){
+    fun setCategory(type: Category) {
         currentCategory = type
         loadProducts(false)
     }
@@ -55,17 +55,27 @@ class ProductGridViewModel @Inject constructor(
     private fun filterProducts(productRes: Result<List<Product>>): LiveData<Result<List<Product>>> {
         val result = MutableLiveData<Result<List<Product>>>()
 
-        if (productRes is Result.Success){
+        if (productRes is Result.Success) {
             viewModelScope.launch {
-                result.postValue(filterItems(productRes.data, getSavedFilterType(), currentCategory))
+                result.postValue(
+                    filterItems(
+                        productRes.data,
+                        getSavedFilterType(),
+                        currentCategory
+                    )
+                )
             }
-        }else{
+        } else {
             result.postValue(productRes)
         }
         return result;
     }
 
-    private fun filterItems(products: List<Product>, filterType: ProductFilterType, category: Category): Result<List<Product>>{
+    private fun filterItems(
+        products: List<Product>,
+        filterType: ProductFilterType,
+        category: Category
+    ): Result<List<Product>> {
         var productsToShow = products.filter { product ->
             if (category == Category.ALL)
                 true
@@ -73,7 +83,7 @@ class ProductGridViewModel @Inject constructor(
                 product.category == category
         }
         productsToShow = productsToShow.filter { product ->
-            when (filterType){
+            when (filterType) {
                 ProductFilterType.POPULAR -> true
                 ProductFilterType.LATEST -> product.id % 2 == 0
                 ProductFilterType.OLDEST -> product.id % 2 == 1

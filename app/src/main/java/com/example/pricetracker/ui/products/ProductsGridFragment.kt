@@ -183,7 +183,7 @@ class ProductsGridFragment : BaseFragment(R.layout.product_grid_fragment) {
             .setTitle(resources.getString(R.string.filter_dialog))
             .setSingleChoiceItems(singleItems, checkedItem) { dialog, which ->
                 viewModel.setFiltering(
-                    when(which) {
+                    when (which) {
                         1 -> ProductFilterType.LATEST
                         2 -> ProductFilterType.OLDEST
                         else -> ProductFilterType.POPULAR
