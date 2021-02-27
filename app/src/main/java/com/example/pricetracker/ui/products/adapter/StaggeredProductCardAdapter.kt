@@ -15,6 +15,12 @@ import com.example.pricetracker.domain.entity.Product
 class StaggeredProductCardAdapter :
     ListAdapter<Product, StaggeredProductCardAdapter.ProductViewHolder>(ProductDiffCallback()) {
 
+    private var clickListener: ((Product) -> Unit)? = null
+
+    fun setClickListener(listener: (Product) -> Unit){
+        this.clickListener = listener
+    }
+
     inner class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var productImage: ImageView = itemView.findViewById(R.id.product_image)
         var productTitle: TextView = itemView.findViewById(R.id.product_title)
@@ -40,6 +46,11 @@ class StaggeredProductCardAdapter :
         val product = getItem(position)
         holder.productTitle.text = product.name
         Glide.with(holder.itemView.context).load(product.imageUrl).into(holder.productImage)
+        holder.itemView.setOnClickListener {
+            clickListener?.let { click ->
+                click(product)
+            }
+        }
     }
 }
 

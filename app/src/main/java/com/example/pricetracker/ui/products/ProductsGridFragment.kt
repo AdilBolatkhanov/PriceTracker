@@ -10,6 +10,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pricetracker.R
@@ -34,6 +35,7 @@ class ProductsGridFragment : BaseFragment(R.layout.product_grid_fragment) {
     private lateinit var navIconClickListener: NavigationIconClickListener
 
     private lateinit var productGridAdapter: StaggeredProductCardAdapter
+    private var checkedItem = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,6 +48,12 @@ class ProductsGridFragment : BaseFragment(R.layout.product_grid_fragment) {
     }
 
     private fun setClickListeners() {
+        productGridAdapter.setClickListener {
+            findNavController().navigate(
+                ProductsGridFragmentDirections.actionProductsGridFragmentToProductDetailFragment(it.id)
+            )
+        }
+
         featuredBtn.setOnClickListener {
             viewModel.setCategory(Category.ALL)
             clickOnNavIcon()
@@ -170,12 +178,19 @@ class ProductsGridFragment : BaseFragment(R.layout.product_grid_fragment) {
             resources.getString(R.string.filter_latest),
             resources.getString(R.string.filter_oldest)
         )
-        val checkedItem = 1
 
         MaterialAlertDialogBuilder(requireContext(), R.style.ThemeOverlay_App_MaterialAlertDialog)
             .setTitle(resources.getString(R.string.filter_dialog))
             .setSingleChoiceItems(singleItems, checkedItem) { dialog, which ->
-                Timber.d(which.toString())
+                viewModel.setFiltering(
+                    when(which) {
+                        1 -> ProductFilterType.LATEST
+                        2 -> ProductFilterType.OLDEST
+                        else -> ProductFilterType.POPULAR
+                    }
+                )
+                checkedItem = which
+                dialog.dismiss()
             }
             .show()
     }
