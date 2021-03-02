@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true">
+
+        <FrameLayout
+            android:id="@+id/imageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="16dp"
+                app:spi_dotColor="@color/colorAccent"
+                app:spi_dotSelectedColor="@color/textColorPrimary"
+                app:spi_orientation="horizontal" />
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="top"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_baseline_keyboard_backspace_24"
+                app:tint="@color/black" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/logo_content_description"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageContainer" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="20dp"
+            app:tint="@color/black"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageContainer" />
+
+        <View
+            android:id="@+id/boundary1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="16dp"
+            android:background="@color/gray"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameTv" />
+
+
+        <TextView
+            android:id="@+id/capacityTv"
+            style="@style/TitleOfFunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Capacity"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boundary1" />
+
+        <TextView
+            android:id="@+id/capacityValTv"
+            style="@style/ValueOfCharacteristic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="100 GB"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/capacityTv" />
+
+        <TextView
+            android:id="@+id/finishTv"
+            style="@style/TitleOfFunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Finish"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/capacityValTv" />
+
+        <TextView
+            android:id="@+id/finishValTv"
+            style="@style/ValueOfCharacteristic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Graphite"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/finishTv" />
+
+        <TextView
+            android:id="@+id/widthTv"
+            style="@style/TitleOfFunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Width"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/finishValTv" />
+
+        <TextView
+            android:id="@+id/widthValTv"
+            style="@style/ValueOfCharacteristic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="78 mm"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/widthTv" />
+
+        <TextView
+            android:id="@+id/heightTv"
+            style="@style/TitleOfFunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Height"
+            app:layout_constraintLeft_toLeftOf="@+id/capacityTv"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boundary1" />
+
+        <TextView
+            android:id="@+id/heightValTv"
+            style="@style/ValueOfCharacteristic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="160 mm"
+            app:layout_constraintLeft_toLeftOf="@+id/heightTv"
+            app:layout_constraintTop_toBottomOf="@+id/heightTv" />
+
+        <TextView
+            android:id="@+id/depthTv"
+            style="@style/TitleOfFunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Depth"
+            app:layout_constraintLeft_toLeftOf="@+id/finishTv"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/heightValTv" />
+
+        <TextView
+            android:id="@+id/depthValTv"
+            style="@style/ValueOfCharacteristic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7 mm"
+            app:layout_constraintLeft_toLeftOf="@+id/depthTv"
+            app:layout_constraintTop_toBottomOf="@+id/depthTv" />
+
+
+        <TextView
+            android:id="@+id/dimensionTv"
+            style="@style/TitleOfFunction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dimensions"
+            app:layout_constraintLeft_toLeftOf="@+id/depthValTv"
+            app:layout_constraintTop_toBottomOf="@+id/depthValTv" />
+
+        <TextView
+            android:id="@+id/dimensionValTv"
+            style="@style/ValueOfCharacteristic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1200"
+            app:layout_constraintLeft_toLeftOf="@+id/dimensionTv"
+            app:layout_constraintTop_toBottomOf="@+id/dimensionTv" />
+
+        <View
+            android:id="@+id/boundary2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gray"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dimensionValTv" />
+
+        <TextView
+            android:id="@+id/priceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Price"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toStartOf="@+id/priceValTv"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/boundary2" />
+
+        <TextView
+            android:id="@+id/priceValTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="280 000 - 600 000"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/priceTv"
+            app:layout_constraintTop_toBottomOf="@id/boundary2" />
+
+
+        <View
+            android:id="@+id/boundary3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gray"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/priceValTv" />
+
+        <TextView
+            android:id="@+id/sulpakTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Sulpak"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:layout_marginRight="30dp"
+            app:layout_constraintEnd_toStartOf="@+id/priceValTv"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/boundary3" />
+
+        <TextView
+            android:id="@+id/sulpakValTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="280 000"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/priceTv"
+            app:layout_constraintTop_toBottomOf="@id/boundary3" />
+
+        <TextView
+            android:id="@+id/mechtaTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Mechta"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:layout_marginRight="30dp"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/sulpakTv"
+            app:layout_constraintTop_toBottomOf="@id/sulpakTv" />
+
+        <TextView
+            android:id="@+id/mechtaValTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="600 000"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/priceTv"
+            app:layout_constraintTop_toBottomOf="@id/sulpakTv" />
+
+        <TextView
+            android:id="@+id/technoTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Technodom"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:layout_marginRight="30dp"
+
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/mechtaTv"
+            app:layout_constraintTop_toBottomOf="@id/mechtaTv" />
+
+        <TextView
+            android:id="@+id/technoValTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="600 000"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/priceTv"
+            app:layout_constraintTop_toBottomOf="@id/mechtaTv" />
+
+
+        <TextView
+            android:id="@+id/belyiTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Belyi Veter"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/technoTv"
+            app:layout_constraintTop_toBottomOf="@id/technoTv" />
+
+        <TextView
+            android:id="@+id/belyiValTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="280 000"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/priceTv"
+            app:layout_constraintTop_toBottomOf="@id/technoTv"
+            android:layout_marginBottom="20dp"/>
+
+        <View
+            android:id="@+id/boundary4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gray"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/belyiValTv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

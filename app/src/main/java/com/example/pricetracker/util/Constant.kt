@@ -1,10 +1,12 @@
 package com.example.pricetracker.util
 
+import com.example.pricetracker.ui.detail.model.Image
+
 object Constant {
 
     const val DATABASE_NAME = "tracker-database"
 
-    const val BASE_URL = "http://192.168.100.2:8000/"
+    const val BASE_URL = "http://192.168.0.18:8000/"
 
     val IMAGE_STORAGE: HashMap<Int, String> = hashMapOf(
         0 to "https://storage.googleapis.com/material-vignettes.appspot.com/image/0-0.jpg",
@@ -46,4 +48,15 @@ object Constant {
         36 to "https://storage.googleapis.com/material-vignettes.appspot.com/image/36-0.jpg",
         37 to "https://storage.googleapis.com/material-vignettes.appspot.com/image/37-0.jpg"
     )
+
+    fun getImages(): List<Image> {
+        val imageList = mutableListOf<Image>()
+        for (i in 0 until 3){
+            val randomInd = (0 until IMAGE_STORAGE.size).random()
+            val imageUrl = IMAGE_STORAGE[randomInd]
+            imageList.add(Image(i, imageUrl!!))
+        }
+        return imageList
+    }
+
 }
