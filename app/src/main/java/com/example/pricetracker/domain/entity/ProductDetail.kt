@@ -1,5 +1,7 @@
 package com.example.pricetracker.domain.entity
 
+import com.example.pricetracker.ui.detail.model.Image
+
 data class ProductDetail(
     val name: String,
     val prices: List<ShopPrice>,
@@ -9,7 +11,8 @@ data class ProductDetail(
     val height: String,
     val depth: String,
     val dimensions: String,
-    val maxPrice: String
+    val maxPrice: String,
+    val images: List<Image>
 )
 
 data class ShopPrice(

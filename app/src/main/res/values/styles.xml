@@ -28,8 +28,8 @@
     </style>
 
     <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
-        <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAppearance">?attr/textAppearanceHeadline4</item>
     </style>
 
     <style name="TextAppearance.Tracker.Title" parent="TextAppearance.MaterialComponents.Headline4">

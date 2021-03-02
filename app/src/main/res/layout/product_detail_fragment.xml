@@ -381,6 +381,18 @@
             app:constraint_referenced_ids="nameTv, favBtn, capacityTv, capacityValTv, finishTv, finishValTv, heightTv, heightValTv, depthTv, depthValTv, widthTv, widthValTv, dimensionTv, dimensionValTv, priceTv, priceValTv, boundary1, boundary2, boundary3, boundary4, sulpakTv, sulpakValTv, mechtaTv, mechtaValTv, technoTv, technoValTv, belyiTv, belyiValTv"
             android:visibility="visible"/>
 
+        <ImageView
+            android:id="@+id/errorIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_baseline_error_outline_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

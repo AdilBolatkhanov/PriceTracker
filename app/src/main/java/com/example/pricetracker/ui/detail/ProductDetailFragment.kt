@@ -11,6 +11,10 @@ import com.example.pricetracker.domain.entity.ProductDetail
 import com.example.pricetracker.ui.BaseFragment
 import com.example.pricetracker.ui.detail.adapte.DynamicStateImagePagerAdapter
 import com.example.pricetracker.util.Constant
+import com.example.pricetracker.util.Constant.BELYIVETER
+import com.example.pricetracker.util.Constant.MECHTA
+import com.example.pricetracker.util.Constant.SULPAK
+import com.example.pricetracker.util.Constant.TECHNODOM
 import com.example.pricetracker.util.Event
 import com.example.pricetracker.util.Result
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +24,8 @@ import kotlinx.android.synthetic.main.product_detail_fragment.*
 class ProductDetailFragment : BaseFragment(R.layout.product_detail_fragment) {
 
     private val viewModel: ProductDetailViewModel by viewModels()
+
+    private lateinit var adapter: DynamicStateImagePagerAdapter
 
     private val args: ProductDetailFragmentArgs by navArgs()
 
@@ -44,6 +50,7 @@ class ProductDetailFragment : BaseFragment(R.layout.product_detail_fragment) {
                 }
                 is Result.Error -> {
                     group.visibility = View.GONE
+                    errorIcon.visibility = View.VISIBLE
                     showSnackbar(result.message)
                 }
                 is Result.Loading -> group.visibility = View.GONE
@@ -60,6 +67,19 @@ class ProductDetailFragment : BaseFragment(R.layout.product_detail_fragment) {
         depthValTv.text = detail.depth
         dimensionValTv.text = detail.dimensions
         priceValTv.text = detail.maxPrice
+
+        detail.prices.forEach { price ->
+            when (price.shopName){
+                SULPAK -> sulpakValTv.text = "${price.cost}"
+                TECHNODOM -> technoValTv.text = "${price.cost}"
+                MECHTA -> mechtaValTv.text = "${price.cost}"
+                BELYIVETER -> belyiValTv.text = "${price.cost}"
+            }
+        }
+
+        adapter.setImages(detail.images)
+        indicator.attachToPager(viewPager)
+        viewPager.setCurrentItem(0, false)
     }
 
     private fun setupClickListener() {
@@ -69,12 +89,9 @@ class ProductDetailFragment : BaseFragment(R.layout.product_detail_fragment) {
     }
 
     private fun setupViewPager() {
-        val adapter = DynamicStateImagePagerAdapter(requireActivity())
-        adapter.setImages(Constant.getImages())
+        adapter = DynamicStateImagePagerAdapter(requireActivity())
         viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager.adapter = adapter
-        indicator.attachToPager(viewPager)
-        viewPager.setCurrentItem(0, false)
     }
 
 }

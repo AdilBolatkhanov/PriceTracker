@@ -76,13 +76,13 @@ class ProductGridViewModel @Inject constructor(
         filterType: ProductFilterType,
         category: Category
     ): Result<List<Product>> {
-        val productsToShow = products.filter { product ->
+        var productsToShow = products.filter { product ->
             if (category == Category.ALL)
                 true
             else
                 product.category == category
         }
-        when (filterType) {
+        productsToShow = when (filterType) {
             ProductFilterType.POPULAR -> productsToShow.sortedBy { it.category }
             ProductFilterType.LATEST -> productsToShow.sortedBy { it.id }
             ProductFilterType.OLDEST -> productsToShow.sortedByDescending { it.id }

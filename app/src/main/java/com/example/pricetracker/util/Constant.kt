@@ -49,6 +49,11 @@ object Constant {
         37 to "https://storage.googleapis.com/material-vignettes.appspot.com/image/37-0.jpg"
     )
 
+    const val SULPAK = "Sulpak"
+    const val TECHNODOM = "TechnoDom"
+    const val MECHTA = "Mechta"
+    const val BELYIVETER = "BelyiVeter"
+
     val TYPES_FINISH = listOf("Graphite", "Glass", "Matte")
 
     fun getImages(): List<Image> {

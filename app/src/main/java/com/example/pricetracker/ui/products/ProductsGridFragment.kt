@@ -1,7 +1,11 @@
 package com.example.pricetracker.ui.products
 
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -178,9 +182,11 @@ class ProductsGridFragment : BaseFragment(R.layout.product_grid_fragment) {
             resources.getString(R.string.filter_latest),
             resources.getString(R.string.filter_oldest)
         )
-
-        MaterialAlertDialogBuilder(requireContext(), R.style.ThemeOverlay_App_MaterialAlertDialog)
-            .setTitle(resources.getString(R.string.filter_dialog))
+        val title = SpannableString(resources.getString(R.string.filter_dialog))
+        title.setSpan(StyleSpan(Typeface.BOLD),0,title.length,0)
+        title.setSpan(RelativeSizeSpan(1.1F),0,title.length,0)
+         MaterialAlertDialogBuilder(requireContext(), R.style.ThemeOverlay_App_MaterialAlertDialog)
+            .setTitle(title)
             .setSingleChoiceItems(singleItems, checkedItem) { dialog, which ->
                 viewModel.setFiltering(
                     when (which) {
