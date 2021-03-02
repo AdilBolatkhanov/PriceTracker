@@ -49,6 +49,8 @@ object Constant {
         37 to "https://storage.googleapis.com/material-vignettes.appspot.com/image/37-0.jpg"
     )
 
+    val TYPES_FINISH = listOf("Graphite", "Glass", "Matte")
+
     fun getImages(): List<Image> {
         val imageList = mutableListOf<Image>()
         for (i in 0 until 3){

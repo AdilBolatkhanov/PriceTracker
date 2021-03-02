@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detailContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
@@ -35,7 +36,7 @@
                 app:spi_orientation="horizontal" />
 
             <ImageView
-                android:id="@+id/backBtn"
+                android:id="@+id/setupClickListener"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_gravity="top"
@@ -46,24 +47,28 @@
 
         <TextView
             android:id="@+id/nameTv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="@string/logo_content_description"
+            android:text="Adil Bolatkhanov"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageContainer" />
+            app:layout_constraintRight_toLeftOf="@id/favBtn"
+            app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+            />
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:id="@+id/favBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_margin="20dp"
             app:tint="@color/black"
             android:src="@drawable/ic_baseline_favorite_border_24"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageContainer" />
+            app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+            app:layout_constraintBottom_toTopOf="@id/boundary1"/>
 
         <View
             android:id="@+id/boundary1"
@@ -368,6 +373,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/belyiValTv" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="nameTv, favBtn, capacityTv, capacityValTv, finishTv, finishValTv, heightTv, heightValTv, depthTv, depthValTv, widthTv, widthValTv, dimensionTv, dimensionValTv, priceTv, priceValTv, boundary1, boundary2, boundary3, boundary4, sulpakTv, sulpakValTv, mechtaTv, mechtaValTv, technoTv, technoValTv, belyiTv, belyiValTv"
+            android:visibility="visible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
