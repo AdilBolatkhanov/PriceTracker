@@ -3,13 +3,11 @@ package com.example.pricetracker.ui.detail
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.pricetracker.R
 import kotlinx.android.synthetic.main.image_fragment.*
-import kotlinx.android.synthetic.main.product_detail_fragment.*
 
-class ImageFragment: Fragment(R.layout.image_fragment) {
+class ImageFragment : Fragment(R.layout.image_fragment) {
     private var imageId = 0
     private var imageUrl = ""
 

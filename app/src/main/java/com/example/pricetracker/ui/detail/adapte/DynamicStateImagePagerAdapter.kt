@@ -6,8 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.pricetracker.ui.detail.ImageFragment
 import com.example.pricetracker.ui.detail.model.Image
 
-class DynamicStateImagePagerAdapter(activity: FragmentActivity)
-    : FragmentStateAdapter(activity) {
+class DynamicStateImagePagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
 
     private var categoryFragmentHolders = listOf<ImageHolder>()
 

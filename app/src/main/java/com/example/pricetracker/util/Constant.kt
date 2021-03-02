@@ -53,7 +53,7 @@ object Constant {
 
     fun getImages(): List<Image> {
         val imageList = mutableListOf<Image>()
-        for (i in 0 until 3){
+        for (i in 0 until 3) {
             val randomInd = (0 until IMAGE_STORAGE.size).random()
             val imageUrl = IMAGE_STORAGE[randomInd]
             imageList.add(Image(i, imageUrl!!))

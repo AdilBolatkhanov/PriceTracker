@@ -68,7 +68,7 @@ class ProductGridViewModel @Inject constructor(
         } else {
             result.postValue(productRes)
         }
-        return result;
+        return result
     }
 
     private fun filterItems(
@@ -76,18 +76,16 @@ class ProductGridViewModel @Inject constructor(
         filterType: ProductFilterType,
         category: Category
     ): Result<List<Product>> {
-        var productsToShow = products.filter { product ->
+        val productsToShow = products.filter { product ->
             if (category == Category.ALL)
                 true
             else
                 product.category == category
         }
-        productsToShow = productsToShow.filter { product ->
-            when (filterType) {
-                ProductFilterType.POPULAR -> true
-                ProductFilterType.LATEST -> product.id % 2 == 0
-                ProductFilterType.OLDEST -> product.id % 2 == 1
-            }
+        when (filterType) {
+            ProductFilterType.POPULAR -> productsToShow.sortedBy { it.category }
+            ProductFilterType.LATEST -> productsToShow.sortedBy { it.id }
+            ProductFilterType.OLDEST -> productsToShow.sortedByDescending { it.id }
         }
         return Result.Success(productsToShow)
     }
