@@ -56,6 +56,7 @@ class ProductGridViewModel @Inject constructor(
         val result = MutableLiveData<Result<List<Product>>>()
 
         if (productRes is Result.Success) {
+            result.postValue(Result.Loading)
             viewModelScope.launch {
                 result.postValue(
                     filterItems(
@@ -83,7 +84,7 @@ class ProductGridViewModel @Inject constructor(
                 product.category == category
         }
         productsToShow = when (filterType) {
-            ProductFilterType.POPULAR -> productsToShow.sortedBy { it.category }
+            ProductFilterType.POPULAR -> productsToShow.sortedBy { it.imageUrl }
             ProductFilterType.LATEST -> productsToShow.sortedBy { it.id }
             ProductFilterType.OLDEST -> productsToShow.sortedByDescending { it.id }
         }

@@ -25,4 +25,5 @@
     <string name="filter_popular">Popular</string>
     <string name="filter_latest">Latest</string>
     <string name="filter_oldest">Oldest</string>
+    <string name="go_to_website">Go to website</string>
 </resources>

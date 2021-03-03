@@ -1,5 +1,7 @@
 package com.example.pricetracker.ui.detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -10,7 +12,6 @@ import com.example.pricetracker.R
 import com.example.pricetracker.domain.entity.ProductDetail
 import com.example.pricetracker.ui.BaseFragment
 import com.example.pricetracker.ui.detail.adapte.DynamicStateImagePagerAdapter
-import com.example.pricetracker.util.Constant
 import com.example.pricetracker.util.Constant.BELYIVETER
 import com.example.pricetracker.util.Constant.MECHTA
 import com.example.pricetracker.util.Constant.SULPAK
@@ -39,6 +40,15 @@ class ProductDetailFragment : BaseFragment(R.layout.product_detail_fragment) {
 
     private fun subscribeToObservers() {
         viewModel.productDetail.observe(viewLifecycleOwner, ::handleProductDetail)
+        viewModel.openLinkInBrowser.observe(viewLifecycleOwner, ::handleOpenLinkInBrowser)
+    }
+
+    private fun handleOpenLinkInBrowser(event: Event<String>){
+        val webpage: Uri = Uri.parse(event.getContentIfNotHandled())
+        val intent = Intent(Intent.ACTION_VIEW, webpage)
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(intent)
+        }
     }
 
     private fun handleProductDetail(detail: Event<Result<ProductDetail>>) {
@@ -69,7 +79,7 @@ class ProductDetailFragment : BaseFragment(R.layout.product_detail_fragment) {
         priceValTv.text = detail.maxPrice
 
         detail.prices.forEach { price ->
-            when (price.shopName){
+            when (price.shopName) {
                 SULPAK -> sulpakValTv.text = "${price.cost}"
                 TECHNODOM -> technoValTv.text = "${price.cost}"
                 MECHTA -> mechtaValTv.text = "${price.cost}"
@@ -86,6 +96,13 @@ class ProductDetailFragment : BaseFragment(R.layout.product_detail_fragment) {
         setupClickListener.setOnClickListener {
             findNavController().popBackStack()
         }
+        scrollView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
+            if (scrollY <= oldScrollY)
+                visitWebsiteFab.extend()
+            else
+                visitWebsiteFab.shrink()
+        }
+        visitWebsiteFab.setOnClickListener { viewModel.openLinkInBrowser() }
     }
 
     private fun setupViewPager() {

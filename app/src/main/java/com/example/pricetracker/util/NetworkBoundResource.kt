@@ -22,7 +22,6 @@ inline fun <ResultType, RequestType> networkBoundResource(
         } catch (t: Throwable) {
             onFetchFailed(t)
             query().map {
-                Result.Success(it)
                 Result.Error("Couldn't reach server. It might be down")
             }
         }

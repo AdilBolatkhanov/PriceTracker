@@ -39,7 +39,7 @@ class ProductsGridFragment : BaseFragment(R.layout.product_grid_fragment) {
     private lateinit var navIconClickListener: NavigationIconClickListener
 
     private lateinit var productGridAdapter: StaggeredProductCardAdapter
-    private var checkedItem = 0
+    private var checkedItem = 1
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

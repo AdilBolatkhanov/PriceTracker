@@ -6,7 +6,7 @@ object Constant {
 
     const val DATABASE_NAME = "tracker-database"
 
-    const val BASE_URL = "http://192.168.0.18:8000/"
+    const val BASE_URL = "http://192.168.0.107:8000/"
 
     val IMAGE_STORAGE: HashMap<Int, String> = hashMapOf(
         0 to "https://storage.googleapis.com/material-vignettes.appspot.com/image/0-0.jpg",
@@ -53,6 +53,13 @@ object Constant {
     const val TECHNODOM = "TechnoDom"
     const val MECHTA = "Mechta"
     const val BELYIVETER = "BelyiVeter"
+
+    val URLS_OF_SHOPS = hashMapOf<String, String>(
+        SULPAK to "https://www.sulpak.kz/",
+        TECHNODOM to "https://www.technodom.kz/",
+        MECHTA to "https://www.mechta.kz/",
+        BELYIVETER to "https://shop.kz/"
+    )
 
     val TYPES_FINISH = listOf("Graphite", "Glass", "Matte")
 

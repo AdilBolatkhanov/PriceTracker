@@ -14,6 +14,7 @@ import com.example.pricetracker.util.Constant.MECHTA
 import com.example.pricetracker.util.Constant.SULPAK
 import com.example.pricetracker.util.Constant.TECHNODOM
 import com.example.pricetracker.util.Constant.TYPES_FINISH
+import com.example.pricetracker.util.Constant.URLS_OF_SHOPS
 import kotlin.math.cos
 
 fun ProductsRemoteItem.toDomainModel(): Product {
@@ -71,9 +72,10 @@ fun ProductDetailRemoteDTO.toDomainModel(): ProductDetail {
 }
 
 fun PriceRemote.toPriceDomainModel(): ShopPrice {
+    val shopUrl = URLS_OF_SHOPS[shop.name]
     return ShopPrice(
         cost = cost,
         shopName = shop.name,
-        shopUrl = ""
+        shopUrl = shopUrl!!
     )
 }

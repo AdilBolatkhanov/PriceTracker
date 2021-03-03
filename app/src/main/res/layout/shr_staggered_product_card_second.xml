@@ -20,17 +20,17 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/shr_staggered_product_grid_card_height_landscape"
             android:background="?attr/colorPrimaryDark"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/logo_content_description" />
+            android:contentDescription="@string/logo_content_description"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/product_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:maxLines="1"
             android:ellipsize="end"
             android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:padding="16dp"
             android:text="@string/product_title"
             android:textAlignment="center"
             android:textAppearance="?attr/textAppearanceSubtitle2" />
