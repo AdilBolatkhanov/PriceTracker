@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import com.example.pricetracker.data.dto.products.Category
 import com.example.pricetracker.domain.GetAllProductsUseCase
 import com.example.pricetracker.domain.entity.Product
+import com.example.pricetracker.util.Event
 import com.example.pricetracker.util.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -23,6 +24,9 @@ class ProductGridViewModel @Inject constructor(
     }.distinctUntilChanged().switchMap {
         filterProducts(it)
     }
+
+    private val _searchEvent = MutableLiveData<Event<Unit>>()
+    val searchEvent: LiveData<Event<Unit>> = _searchEvent
 
     private var currentCategory = Category.ALL
 
@@ -48,6 +52,10 @@ class ProductGridViewModel @Inject constructor(
     fun setCategory(type: Category) {
         currentCategory = type
         loadProducts(false)
+    }
+
+    fun searchProduct(){
+        _searchEvent.value = Event(Unit)
     }
 
     fun loadProducts(forceUpdate: Boolean) = _forceUpdate.postValue(forceUpdate)

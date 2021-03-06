@@ -1,6 +1,8 @@
 package com.example.pricetracker.data
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
 import com.example.pricetracker.data.local.ProductLocalDataSource
 import com.example.pricetracker.data.remote.ProductRemoteDataSource
 import com.example.pricetracker.domain.entity.Product
@@ -41,6 +43,10 @@ class TrackerRepositoryImpl(
 
     override suspend fun getDetailOfProduct(productId: Int): Result<ProductDetail> {
         return remoteDataSource.getDetailedProducts(productId)
+    }
+
+    override fun searchByName(query: String): LiveData<PagedList<Product>> {
+        return localDataSource.searchByName(query)
     }
 
 }

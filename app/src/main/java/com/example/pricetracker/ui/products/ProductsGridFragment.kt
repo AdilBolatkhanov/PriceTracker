@@ -23,6 +23,7 @@ import com.example.pricetracker.domain.entity.Product
 import com.example.pricetracker.ui.BaseFragment
 import com.example.pricetracker.ui.products.adapter.ProductGridItemDecoration
 import com.example.pricetracker.ui.products.adapter.StaggeredProductCardAdapter
+import com.example.pricetracker.util.EventObserver
 import com.example.pricetracker.util.NavigationIconClickListener
 import com.example.pricetracker.util.Result
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -96,6 +97,11 @@ class ProductsGridFragment : BaseFragment(R.layout.product_grid_fragment) {
 
     private fun subscribeToObservers() {
         viewModel.items.observe(viewLifecycleOwner, ::handleGetAllProducts)
+        viewModel.searchEvent.observe(viewLifecycleOwner, EventObserver{
+            findNavController().navigate(
+                ProductsGridFragmentDirections.actionProductsGridFragmentToSearchProductFragment()
+            )
+        })
     }
 
     private fun handleGetAllProducts(result: Result<List<Product>>) {
@@ -169,7 +175,7 @@ class ProductsGridFragment : BaseFragment(R.layout.product_grid_fragment) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.search -> {
-
+                viewModel.searchProduct()
             }
             R.id.filter -> showFilterDialog()
         }

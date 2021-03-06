@@ -1,5 +1,8 @@
 package com.example.pricetracker.data.local
 
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
+import androidx.paging.toLiveData
 import com.example.pricetracker.data.local.database.ProductsDao
 import com.example.pricetracker.domain.entity.Product
 import kotlinx.coroutines.Dispatchers
@@ -21,5 +24,8 @@ class ProductLocalDataSourceImpl(
     }
 
     override fun getAllProducts(): Flow<List<Product>> = productsDao.getAllProducts()
+
+    override fun searchByName(query: String): LiveData<PagedList<Product>> =
+        productsDao.searchByName(query).toLiveData(pageSize = 30)
 
 }

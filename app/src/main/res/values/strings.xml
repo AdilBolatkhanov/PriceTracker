@@ -26,4 +26,5 @@
     <string name="filter_latest">Latest</string>
     <string name="filter_oldest">Oldest</string>
     <string name="go_to_website">Go to website</string>
+    <string name="search_hint">Search product</string>
 </resources>
